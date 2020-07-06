@@ -12,13 +12,14 @@ Estas instrucciones le proporcionarán una copia del proyecto en funcionamiento 
 Para el funcionamiento del proyecto es necesario:
 
 - Tener una cuenta de [IBM Cloud](https://www.ibm.com/cloud/)
-- Instalar [CLI de IBM Cloud](https://cloud.ibm.com/docs/cli/reference/ibmcloud?topic=cloud-cli-install-ibmcloud-cli)
+- Contar con credenciales(API KEY y SECRET ACCESS KEY) en AWS
 - Instalar [NodeJS y NPM](https://nodejs.org/es/download/)
+- Instalar [Docker](https://docs.docker.com/engine/install/) y [Docker-compose](https://docs.docker.com/compose/install/)
 - Tener credenciales para el servicio Personality Insights. A continuación se explica el proceso.
 
 #### Servicio y credenciales de Personality Insights
 
-Crear nuestro servicio dentro de IBM Cloud. Para esto, iremos a la parte de catalogo y buscaremos Personality Insihgts.
+Crear nuestro servicio dentro de IBM Cloud. Para esto, iremos a la parte de [catalogo](https://cloud.ibm.com/catalog#services) y buscaremos Personality Insihgts.
 
 <img src="./assets/im1.png"/>
 <img src="./assets/im2.png"/>
@@ -37,8 +38,6 @@ Click en View Credentials para verlas y copiarlas, ya que lo usaremos mas adelan
 <img src="./assets/im6.png"/>
 <img src="./assets/im7.png"/>
 
-En el archivo **.env** se ingresan los credenciales respectivas
-
 ### Installing :arrow_down:
 
 Para usar el proyecto clone el repositorio o descarguelo:
@@ -55,15 +54,43 @@ sudo npm i
 
 ## Deployment 📦
 
-Add additional notes about how to deploy this on a live system
+Agregar las variables necesarias en un archivo .env, basado en la plantilla **.env.example**
 
+```
+PORT=
+APIKEY=
+URL_IBM=
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+```
+
+Iniciar contenedor de DynamoDB
+
+```
+docker-compose up -d
+```
+
+Crear tabla Profile
+
+```
+npm run create-table-profile
+```
+
+Iniciar servidor
+
+```bash
+node server.js 
+```
 ## Built With :hammer_and_wrench:
 
-- [NodeJs]()
- - [Express Framework]()
+- [NodeJs](https://nodejs.org/es/)
+  - [Express Framework](https://expressjs.com/es/)
 
 ## Versioning :triangular_flag_on_post:
 
+- [1.0.0](https://github.com/alvarez98/api-challenge/tree/1.0.0)
+- [1.2.0](https://github.com/alvarez98/api-challenge/tree/1.2.0)
+- [1.2.1](https://github.com/alvarez98/api-challenge/tree/1.2.1)
 
 ## Future work 🚀
 
@@ -71,15 +98,15 @@ Add additional notes about how to deploy this on a live system
 
 - **Esteban Alvarez** - _Initial work_ - [@alvarez98](https://github.com/alvarez98)
 
-## Credits
+## Credits :star:
 
 - **A template to make good README.md** - _Base template_ - [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
 - **Proceso para obtener el servicio y credenciales de Personality Insights de IBM** - [Isaac Carrada](https://github.com/elbuenizzy/PersonalityInsights)
 
-## Referencias
+## Referencias :link:
 
 1. [IBM CLOUD](https://cloud.ibm.com/apidocs/personality-insights?code=node#introduction)
- 
+2. [AWS DynamoDB](https://docs.aws.amazon.com/es_es/amazondynamodb/latest/developerguide/GettingStarted.NodeJs.html)
 ## License 📄
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
