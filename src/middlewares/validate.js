@@ -9,7 +9,7 @@ const { HttpError } = require('../utils/HttpError')
 */
 const validateContent = (req, res, next) => {
     try {
-        const words = req.body.content ? req.body.content.split(" ") : 0
+        const words = req.body.content ? req.body.content.split(" ") : []
         if (words.length < 100) throw new HttpError("Content must be greater than 99 words", 400)
         next()
     } catch (error) {
