@@ -9,7 +9,7 @@
 const handleErrors = (err, req, res, next) => {
     const { code = 500 } = err 
     const { message = 'An internal server error' } = err 
-    res.status(code).send({ message })
+    res.status(code).send({ error: message })
 }
 
 /**

@@ -10,14 +10,16 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "ibm-watson": "^5.6.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "jest": "^26.1.0",
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create-table-profile": "node ./src/db/profile/createTable.js"
   },
   "repository": {
     "type": "git",
