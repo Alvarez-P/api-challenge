@@ -19,10 +19,13 @@ async function newProfileAnalyze(req, res, next) {
     // Validar análisis
     if (analysis.status !== 200) throw new HttpError('An error occurred analyzing the text', 500)
     // Guardar en BD
-    const profile = new Profile(text, analysis.result)    
-    const result = addProfileAnalyze(profile)
-    if (result !== 200) throw new HttpError('There was an error saving the information', 500)
-    res.status(200).send({ message: 'Success' })
+    const profile = new Profile(text, analysis.result)
+    // Funcion callback para addProfileAnalyze
+    function validateResult(err, data) {
+      if (err) throw new HttpError('There was an error saving the data', 500)
+      res.status(201).send({ message: 'Success' })
+    }    
+    addProfileAnalyze(profile, validateResult)
   } catch (error) {
     next(error)
   }

@@ -79,7 +79,7 @@ npm run create-table-profile
 Iniciar servidor
 
 ```bash
-node app.js 
+node server.js 
 ```
 ## Built With :hammer_and_wrench:
 
@@ -90,6 +90,7 @@ node app.js
 
 - [1.0.0](https://github.com/alvarez98/api-challenge/tree/1.0.0)
 - [1.2.0](https://github.com/alvarez98/api-challenge/tree/1.2.0)
+- [1.2.1](https://github.com/alvarez98/api-challenge/tree/1.2.1)
 
 ## Future work 🚀
 

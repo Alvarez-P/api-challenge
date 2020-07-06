@@ -1,5 +1,4 @@
 'use strict'
-require('dotenv').config()
 
 const express = require('express')
 const app = express()
@@ -9,7 +8,6 @@ const cors = require('cors')
 const api = require('./src/routes')
 const { handleErrors, errors404 } = require('./src/middlewares/errors')
 
-const { PORT = 5000 } = process.env
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -18,7 +16,5 @@ app.use(cors())
 app.use('/pi', api)
 app.use(handleErrors)
 app.all('*', errors404)
-// Start server
-app.listen(PORT, () => {
-    console.log(`API REST running on http://localhost:${PORT}`)
-})
+
+module.exports = app
