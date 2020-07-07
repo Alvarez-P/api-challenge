@@ -8,11 +8,6 @@ const AWS = require("../config")
  * @return {number} Codigo HTTP de la respuesta al guardar en la BD
 */
 const addProfileAnalyze = (profile, validateResult) => {
-    AWS.config.update({
-        region: "eu-west-2",
-        endpoint: "http://localhost:8000"
-    })
-
     const docClient = new AWS.DynamoDB.DocumentClient()
     const params = {
         TableName: "Profile",
